@@ -43,8 +43,9 @@ public final class SkladoveHospodarstvi {
     private PreparedStatement isAlive;
     private PreparedStatement getZbozi;
     private PreparedStatement updateMaterial;
-
+private final int idProdejny;
     private SkladoveHospodarstvi(int idProdejny) {
+        this.idProdejny = idProdejny;
         connect();
         zboziNaProdejne = getZbozi();
     }
@@ -81,7 +82,8 @@ public final class SkladoveHospodarstvi {
             if (conn != null) {
                 isAlive = conn.prepareStatement("SELECT 1");
                 //         getUsers = conn.prepareStatement("SELECT id, name, surname, pin, admin FROM users ORDER BY surname ASC");
-                getZbozi = conn.prepareStatement("SELECT idDodavatele, idVyrobce, cenaNakupni, marze, fixniMarze, carovyKod, jmeno, idProdejny, popis FROM zbozi ORDER BY carovyKod ASC");
+                getZbozi = conn.prepareStatement("SELECT idDodavatele, idVyrobce, cenaNakupni, marze, fixniMarze, carovyKod, jmeno, popis FROM zbozi WHERE zbozi.idProdejny ="+
+                    idProdejny    +" ORDER BY carovyKod ASC");
                 //   updateMaterial = conn.prepareStatement("UPDATE material SET metry=?, ks=? WHERE id = ?");
 //                insertPohyb = conn.prepareStatement("INSERT INTO movements (material,date,user,pohyb,stav) VALUES(?,NOW(),?,?,?);");
 //                getMovements = conn.prepareStatement("select movements.id id_poh,pohyb,date,stav,material.id id_mat,material.name mat, "
@@ -105,16 +107,18 @@ public final class SkladoveHospodarstvi {
                     int idDodavatele, idVyrobce;
                     double marze, cenaNakupni;
                     boolean fixniMarze;
-                    String popis;
+                    String popis , jmeno;
                     idDodavatele = rs.getInt("idDodavatele");
                     idVyrobce = rs.getInt("idVyrobce");
                     cenaNakupni = rs.getDouble("cenaNakupni");
                     marze = rs.getDouble("marze");
                     fixniMarze = rs.getBoolean("fixniMarze");
+                    jmeno = rs.getString("jmeno");
                     popis = rs.getString("popis");
                     Zbozi z = new Zbozi(new Dodavatel(idDodavatele),
                             new Vyrobce(idVyrobce), cenaNakupni,
-                            marze, fixniMarze, popis);
+                            marze, fixniMarze,
+                            jmeno,popis);
                     list.add(z);
                 }
             } catch (SQLException ex) {

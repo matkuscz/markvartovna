@@ -21,7 +21,7 @@ public class ZboziTest {
     @Test
     public void testZjistiCenuZboziZa200ProcentualniMarze() {
         System.out.println("getCena");
-        Zbozi instance = new Zbozi(null, null,200, 0.5, false, null);
+        Zbozi instance = new Zbozi(null, null,200, 0.5, false, null, null);
         double expResult = (200 + 200*0.5)* Zbozi.DPH;
         double result = instance.spocitejZlevnenouCenuS_DPH(zamestnanec);
         assertEquals(expResult, result, 0.0);
@@ -30,7 +30,7 @@ public class ZboziTest {
     public void testZjistiCenuZboziZa200SPevnouMarzi200() {
         System.out.println("getCena");
         double pevnaMarze = 200;
-        Zbozi instance = new Zbozi(null, null,200, pevnaMarze, true, null);
+        Zbozi instance = new Zbozi(null, null,200, pevnaMarze, true, null,null);
         double expResult =(200 + pevnaMarze)* Zbozi.DPH;
         double result = instance.spocitejZlevnenouCenuS_DPH(zamestnanec);
         assertEquals(expResult, result, 0.0);

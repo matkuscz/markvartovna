@@ -16,7 +16,8 @@ public class Zbozi {
      */
     private double marze;
     private final boolean marzeFix;
-    private String popis;
+    private final String popis;
+    private final String jmeno;
 
     /**
      *
@@ -26,13 +27,14 @@ public class Zbozi {
      * @param marze
      * @param marzeFix
      */
-    public Zbozi(Dodavatel dodavatel, Vyrobce vyrobce, double cenaNakupni, double marze, boolean marzeFix, String popis) {
+    public Zbozi(Dodavatel dodavatel, Vyrobce vyrobce, double cenaNakupni, double marze, boolean marzeFix, String jmeno, String popis) {
         this.dodavatel = dodavatel;
         this.vyrobce = vyrobce;
         this.marze = marze;
         this.cenaNakupni = cenaNakupni;
         this.marzeFix = marzeFix;
         this.popis = popis;
+        this.jmeno = jmeno;
     }
 
     public double spocitejZlevnenouCenuS_DPH(Zamestnanec zamestnanec) {
@@ -48,6 +50,7 @@ public class Zbozi {
 
     @Override
     public String toString() {
-        return dodavatel.toString() + ", " + vyrobce.toString() + ", cena: " + getCenaBezDPH() * DPH + popis;
+        return dodavatel.toString() + ", " + vyrobce.toString() + ", cena: " +
+                getCenaBezDPH() * DPH +"Kč, "+jmeno+" - "+ popis;
     }
 }
