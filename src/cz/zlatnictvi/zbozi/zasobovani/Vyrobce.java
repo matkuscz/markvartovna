@@ -1,13 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package cz.zlatnictvi.zbozi.zasobovani;
 
-/**
- *
- * @author Matka
- */
+package cz.zlatnictvi.zbozi.zasobovani;
 public class Vyrobce {
-    
+private final int idVyrobce;
+
+    public Vyrobce(int idVyrobce) {
+        this.idVyrobce = idVyrobce;
+    }
+
+    @Override
+    public String toString() {
+        return "idVyrobce["+idVyrobce+"]";
+    }
+
+
 }

@@ -20,7 +20,7 @@ public class NakupTest {
         Zakaznik zakaznik = new Zakaznik();
         Zamestnanec prodavac = new Zamestnanec();
         Pokladna pokladna = new Pokladna(1);
-        Zbozi retizek = new Zbozi(null, null, 200, 100, true);
+        Zbozi retizek = new Zbozi(null, null, 200, 100, true, null);
         ArrayList<Zbozi> zbozi = new ArrayList<>();
         zbozi.add(retizek);
         ZakazkovyList zakList =pokladna.vytvorZakazkovyList(zbozi, prodavac);

@@ -23,14 +23,14 @@ public class Pokladna {
     public ZakazkovyList vytvorZakazkovyList(ArrayList<Zbozi> zbozi, Zamestnanec zamestnanec) {
         double cenaTrasakce = 0;
         for (Zbozi aktZbozi : zbozi) {
-            cenaTrasakce += aktZbozi.getCena(zamestnanec);
+            cenaTrasakce += aktZbozi.spocitejZlevnenouCenuS_DPH(zamestnanec);
 
             //sklad.odskladniZbozi(aktZbozi);
         }
         zustatekHotovosti += cenaTrasakce;
         ZakazkovyList retList = new ZakazkovyList(zbozi, cenaTrasakce);
 
-        return null;
+        return retList;
     }
 
     public double getZustatekHotovosti() {
