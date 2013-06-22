@@ -1,18 +1,13 @@
-
 package cz.zlatnictvi;
 
-import cz.zlatnictvi.zbozi.Zbozi;
-
-
 public class Zamestnanec {
+
     private final POZICE pozice;
 
     public Zamestnanec() {
-    pozice = POZICE.PRODAVAC;
+        pozice = POZICE.PRODAVAC;
     }
 
-    
-    
     public Zamestnanec(POZICE pozice) {
         this.pozice = pozice;
     }
@@ -21,18 +16,14 @@ public class Zamestnanec {
         return pozice;
     }
 
-  public  double spocitejSlevu(Zbozi aktZbozi) {
-        switch(pozice){
+    public double spocitejSlevu(double cena) {
+        switch (pozice) {
             case PRODAVAC:
-                return aktZbozi.getCena() * 0.95;
+                return cena * 1;
             case VEDOUCI_PRODEJNY:
-                return aktZbozi.getCena() * 0.9;
+                return cena * 0.9;
             default:
-                return aktZbozi.getCena()* 0.99;
-                       }
-                
+                return cena * 0.99;
+        }
     }
-    
-    
-    
 }

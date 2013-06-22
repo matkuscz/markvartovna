@@ -1,15 +1,10 @@
 
 package cz.zlatnictvi;
 
-import cz.zlatnictvi.zbozi.Retizek;
 import cz.zlatnictvi.zbozi.Zbozi;
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 public class NakupTest {
     
     public NakupTest() {
@@ -25,7 +20,7 @@ public class NakupTest {
         Zakaznik zakaznik = new Zakaznik();
         Zamestnanec prodavac = new Zamestnanec();
         Pokladna pokladna = new Pokladna(1);
-        Zbozi retizek = new Retizek();
+        Zbozi retizek = new Zbozi(null, null, 200, 100, true);
         ArrayList<Zbozi> zbozi = new ArrayList<>();
         zbozi.add(retizek);
         ZakazkovyList zakList =pokladna.vytvorZakazkovyList(zbozi, prodavac);

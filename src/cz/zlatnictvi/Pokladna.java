@@ -23,7 +23,7 @@ public class Pokladna {
     public ZakazkovyList vytvorZakazkovyList(ArrayList<Zbozi> zbozi, Zamestnanec zamestnanec) {
         double cenaTrasakce = 0;
         for (Zbozi aktZbozi : zbozi) {
-            cenaTrasakce += (aktZbozi.getCena() - zamestnanec.spocitejSlevu(aktZbozi));
+            cenaTrasakce += aktZbozi.getCena(zamestnanec);
 
             //sklad.odskladniZbozi(aktZbozi);
         }
